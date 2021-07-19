@@ -38,12 +38,12 @@ const Comments = (props) => {
             text += allComments[i].snippet.topLevelComment.snippet.textDisplay + " ";
         }
 
-
+        console.log(text)
         let allWords = text.split(" ");
 
         for (let i = 0; i < allWords.length; i++) {
             let oneWord = allWords[i].toUpperCase();
-            if (counts[oneWord] === undefined) {
+            if (counts[oneWord] === undefined && oneWord.length >= 4) {
                 counts[oneWord] = 1;
                 words.push(oneWord)
             } else {
@@ -67,6 +67,7 @@ const Comments = (props) => {
         getAllComments();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.selectedVideoId])
+
     return (
         <div>
             {(disabledComments ? " " : <div className="mostUsedWords">
