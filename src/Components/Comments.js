@@ -52,9 +52,16 @@ const Comments = (props) => {
         }
         words.sort((a, b) => counts[b] - counts[a]);
         let top15 = []
-        for (let i = 0; i < 15; i++) {
-            let word = words[i];
-            top15.push({ text: word, counts: counts[word] });
+        if (words.length < 15) {
+            for (let i = 0; i < words.length; i++) {
+                let word = words[i];
+                top15.push({ text: word, counts: counts[word] });
+            }
+        } else {
+            for (let i = 0; i < 15; i++) {
+                let word = words[i];
+                top15.push({ text: word, counts: counts[word] });
+            }
         }
         setMostUsedWords(top15)
     }, [allComments])
@@ -71,7 +78,7 @@ const Comments = (props) => {
     return (
         <div>
             {(disabledComments ? " " : <div className="mostUsedWords">
-                <h4>15 Most used words in comments:</h4>
+                <h4>Most used words in comments:</h4>
                 {mostUsedWords.map((comment, id) => {
                     return <p key={id}>{id + 1}. {comment.text}: {comment.counts}</p>
                 })}

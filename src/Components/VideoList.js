@@ -16,8 +16,8 @@ const VideoList = (props) => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            {props.videos.map((video) => (
-                <VideoItem key={video.id.videoId} video={video} handleVideoSelect={props.handleVideoSelect} />
+            {props.videos.map((video, id) => (
+                <VideoItem key={id} video={video} handleVideoSelect={props.handleVideoSelect} />
             )
             )}
         </div>
