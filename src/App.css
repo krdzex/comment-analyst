@@ -1,3 +1,138 @@
 .grid {
     display: grid;
 }
+
+.appWrapper {
+    width: 100%;
+}
+
+.buttonShow {
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    color: rgb(116, 114, 114);
+    font-weight: 700;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.info {
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+}
+
+@media (max-width: 575.98px) {
+    .leftSide {
+        width: 93.5%;
+    }
+    .appWrapper {
+        width: 100vh;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .leftSide {
+        width: 95%;
+    }
+    .appWrapper {
+        width: 100vh;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .leftSide {
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .leftSide {
+        width: 96%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .leftSide {
+        width: 53%;
+    }
+}
+
+.leftSide {
+    padding: 0px 20px 20px 20px;
+    float: left;
+}
+
+.loader {
+    width: 330px;
+    height: 330px;
+    background-color: #ffffff;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    box-shadow: 0 10px 30px rgba(50, 50, 50, 0.2);
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+}
+
+.loader:after {
+    content: "";
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    border: 20px solid #c5c5c5;
+    border-top-color: #e92e3d;
+    border-radius: 50%;
+    animation: spin 1.5s;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.commentsWrapper {
+    background-color: dimgrey;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+}
+
+.buttonShowComments {
+    background-color: dimgrey;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.word {
+    padding: 10px;
+    max-width: 200px;
+    border: 1px solid;
+    margin: 5px 5px
+}
+
+.words {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+}
+
+.mostUsedWords {
+    text-align: center;
+}

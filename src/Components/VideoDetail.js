@@ -3,6 +3,7 @@ import Comments from './Comments';
 
 const VideoDetail = (props) => {
 
+    const [showDescription, setShowDescription] = useState(false);
 
     useEffect(() => {
         if (props.selectedVideo2 !== undefined) {
@@ -23,16 +24,29 @@ const VideoDetail = (props) => {
     if (!props.selectedVideo) {
         return <div></div>
     }
+
+
+    const showDescButton = () => {
+        if (showDescription === false) {
+            setShowDescription(true)
+        } else {
+            setShowDescription(false)
+        }
+    }
     const videoSrc = `https://www.youtube.com/embed/${props.selectedVideo.id.videoId}`
     return (
-        <div style={{ width: "68%", float: "left" }}>
+        <div className="leftSide">
             <iframe src={videoSrc} style={{ width: "100%", height: "700px" }} allowFullScreen title="Video player" />
-            <h4>Title :</h4><p>{props.selectedVideo.snippet.title}</p>
-            <h4>Author channel:</h4><p> {props.selectedVideo.snippet.channelTitle}</p>
-            <h4>Description :</h4><p>{props.selectedVideo.snippet.description}</p>
-            <h4>Length of video:</h4><p>{duration}</p>
-            
+            <div className="info">
+                <h4>Title :</h4><p>{props.selectedVideo.snippet.title}</p>
+                {showDescription && <div><h4>Author channel:</h4><p> {props.selectedVideo.snippet.channelTitle}</p>
+                    <h4>Description :</h4><p>{props.selectedVideo.snippet.description}</p>
+                    <h4>Length of video:</h4><p>{duration}</p></div>}
+                <div onClick={() => showDescButton()} className="buttonShow">{showDescription ? "Show less" : "Show more"}</div>
+            </div>
             <Comments selectedVideoId={props.selectedVideo.id.videoId} />
+
+
         </div >
     );
 };

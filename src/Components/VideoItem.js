@@ -11,6 +11,7 @@ const VideoItem = (props) => {
         image: {
             width: 220,
             height: 128,
+            marginLeft: 10
         },
         img: {
             margin: 'auto',
@@ -19,35 +20,30 @@ const VideoItem = (props) => {
             maxHeight: '100%',
         },
         paper: {
-            padding: theme.spacing(2),
-            margin: "auto",
-            marginTop: 10,
-            width: 500,
-            height: 128,
-            cursor: "pointer"
-
+            marginTop: 15,
+            maxWidth: "100%",
+            width: "100%",
+            cursor: "pointer",
         },
     }));
 
     const classes = useStyles();
     return (
         <Paper className={classes.paper} onClick={() => props.handleVideoSelect(props.video)} >
-            <Grid container spacing={2}>
+            <Grid container style={{ justifyContent: "center", padding: "5px" }} spacing={2}>
                 <Grid item>
                     <ButtonBase className={classes.image}>
                         <img className={classes.img} src={props.video.snippet.thumbnails.medium.url} alt={props.video.snippet.description} />
                     </ButtonBase>
                 </Grid>
-                <Grid item xs={12} sm container>
-                    <Grid item xs container direction="column" spacing={2}>
-                        <Grid item xs>
-                            <Typography style={{ lineHeight: 15 + "px" }}>
-                                {props.video.snippet.title}
-                            </Typography>
-                            <Typography style={{ marginTop: 40 + "px" }} variant="body2" gutterBottom>
-                                {props.video.snippet.channelTitle}
-                            </Typography>
-                        </Grid>
+                <Grid item xs container direction="column" spacing={2}>
+                    <Grid item xs>
+                        <Typography style={{ lineHeight: 15 + "px" }}>
+                            {props.video.snippet.title}
+                        </Typography>
+                        <Typography style={{ marginTop: 40 + "px" }} variant="body2" gutterBottom>
+                            {props.video.snippet.channelTitle}
+                        </Typography>
                     </Grid>
                 </Grid>
             </Grid>

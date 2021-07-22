@@ -19,9 +19,9 @@ const SearchBar = (props) => {
     }
     return (
         <div style={{
-            borderBottom: "1px solid lightgray",
             marginBottom: "20px",
-            height: "75px"
+            height: "75px",
+            maxWidth: "100%"
         }}>
             <form style={{ marginTop: "10px", textAlign: "center" }
             } onSubmit={onSubmitHandle} >
@@ -32,7 +32,7 @@ const SearchBar = (props) => {
                     value={input}
                     onChange={onChangeHandle}
                     variant="outlined"
-                    style={{ width: "500px" }}
+                    style={{ maxWidth: "500px", width: "85%" }}
                 />
             </form >
         </div >

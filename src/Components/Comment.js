@@ -10,7 +10,7 @@ const Comment = (props) => {
     const useStyles = makeStyles((theme) => ({
         root: {
             flexGrow: 1,
-            width: "100%",
+            maxWidth: "100%",
             margin: "5px 5px"
         },
         paper: {

@@ -55,7 +55,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div className="appWrapper">
       <SearchBar getInputValue={getInputValue} />
       <VideoDetail selectedVideo={selectedVideo} selectedVideo2={selectedVideo2} />
       <VideoList videos={videos} handleVideoSelect={handleVideoSelect} />

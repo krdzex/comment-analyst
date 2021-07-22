@@ -4,10 +4,11 @@ import Comment from './Comment';
 
 const Comments = (props) => {
 
+    const [showingComments, setShowingComments] = useState(false);
     const [allComments, setAllComments] = useState([]);
 
     const url = "https://www.googleapis.com/youtube/v3/commentThreads";
-    const KEY = "AIzaSyASx5n9sWfEcwc1wNoYc0Wcy0MWmu91_p8";
+    const KEY = "AIzaSyChS428gFYoW40CxvNHGVOfc4wgAPmos5g";
     const header = {
         "Content-Type": "application/json",
         "Accept": "application/json"
@@ -37,8 +38,6 @@ const Comments = (props) => {
         for (let i = 0; i < allComments.length; i++) {
             text += allComments[i].snippet.topLevelComment.snippet.textDisplay + " ";
         }
-
-        console.log(text)
         let allWords = text.split(" ");
 
         for (let i = 0; i < allWords.length; i++) {
@@ -75,20 +74,33 @@ const Comments = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.selectedVideoId])
 
+    const showComments = () => {
+        if (showingComments) {
+            setShowingComments(false);
+        } else {
+            setShowingComments(true);
+        }
+    }
+
     return (
-        <div>
-            {(disabledComments ? " " : <div className="mostUsedWords">
-                <h4>Most used words in comments:</h4>
-                {mostUsedWords.map((comment, id) => {
-                    return <p key={id}>{id + 1}. {comment.text}: {comment.counts}</p>
-                })}
-            </div>)}
-            <h3>Comments: </h3>
-            {(disabledComments ? "Comments are disabled for this video." : <div className="grid">
-                {allComments.map((comment, id) => {
-                    return <Comment commentInfo={comment} key={id} />
-                })}
-            </div>)}
+        <div className="commentsWrapper">
+            <div onClick={() => showComments()} className="buttonShowComments">{showingComments ? "Hide Comments" : "Show Comments"}</div>
+            {showingComments && <div>
+                {(disabledComments ? " " : <div className="mostUsedWords">
+
+                    <h4>Most used words in comments:</h4>
+                    <div className="words">
+                        {mostUsedWords.map((comment, id) => {
+                            return <div className="word" key={id}>{id + 1}. {comment.text}: {comment.counts}</div>
+                        })}</div>
+                </div>)}
+                <h3>Comments: </h3>
+                {(disabledComments ? "Comments are disabled for this video." : <div className="grid">
+                    {allComments.map((comment, id) => {
+                        return <Comment commentInfo={comment} key={id} />
+                    })}
+                </div>)}
+            </div>}
         </div>
 
     );
