@@ -14,13 +14,12 @@ const VideoList = (props) => {
             background: "dimgrey",
             borderRadius: 10,
             marginRight: 30,
-            marginLeft: 25
+            width: "40%"
         }
     }));
     const classes = useStyles();
-    console.log(props.videos)
     return (<div>
-        {props.videos.length > 0 ? (<div className={classes.root}> <h2>Recommended videos</h2>
+        {props.videos.length > 0 ? (<div className={classes.root} id="recList"> <h2>Recommended videos</h2>
             {props.videos.map((video, id) => (
                 <VideoItem key={id} video={video} handleVideoSelect={props.handleVideoSelect} />
             )
