@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import { Markup } from 'interweave';
 
 const Comment = (props) => {
 
@@ -29,6 +30,8 @@ const Comment = (props) => {
     const image = props.commentInfo.snippet.topLevelComment.snippet.authorProfileImageUrl;
     const likes = props.commentInfo.snippet.topLevelComment.snippet.likeCount;
     const time = props.commentInfo.snippet.topLevelComment.snippet.publishedAt;
+    //<Markup content={textDisplay} />
+
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
@@ -41,7 +44,8 @@ const Comment = (props) => {
                     </Grid>
                     <Grid item>
                         <Typography>
-                            {textDisplay}
+                            <div dangerouslySetInnerHTML={{ __html: textDisplay }}></div>
+
                         </Typography>
                     </Grid>
                     <Grid item style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -60,5 +64,7 @@ const Comment = (props) => {
         </div >
     );
 };
+
+
 
 export default Comment;

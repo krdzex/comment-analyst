@@ -91,7 +91,8 @@ const Comments = (props) => {
                     <h4>Most used words in comments:</h4>
                     <div className="words">
                         {mostUsedWords.map((comment, id) => {
-                            return <div className="word" key={id}>{id + 1}. {comment.text}: {comment.counts}</div>
+                            let wholeSentace = `${id + 1}. ${comment.text}: ${comment.counts}`
+                            return <div className="word" key={id} dangerouslySetInnerHTML={{ __html: wholeSentace }}></div>
                         })}</div>
                 </div>)}
                 <h3>Comments: </h3>
